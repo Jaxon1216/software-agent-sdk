@@ -61,7 +61,13 @@ class TokenUsage(BaseModel):
         ),
     )
     cache_write_tokens: int = Field(
-        default=0, ge=0, description="Cache write tokens must be non-negative"
+        default=0,
+        ge=0,
+        description=(
+            "Non-negative cache-write token count. Like cache_read_tokens, "
+            "included in prompt_tokens for LiteLLM's Anthropic and Bedrock "
+            "usage, so do not add it to prompt_tokens again."
+        ),
     )
     reasoning_tokens: int = Field(
         default=0, ge=0, description="Reasoning tokens must be non-negative"
